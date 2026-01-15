@@ -327,3 +327,343 @@ function repeatStr(str, n) {
 function removeLast(arr) {
   return arr.slice(0, -1);
 }
+
+// 41
+function factorial(n) {
+  return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+
+
+// 42
+function randomTen() {
+  return Math.floor(Math.random() * 10) + 1;
+}
+
+
+// 43
+function endsWith(str, char) {
+  return str.endsWith(char);
+}
+
+
+// 45
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+
+// 46
+function sortAsc(arr) {
+  return [...arr].sort((a, b) => a - b);
+}
+
+
+// 47
+function sortDesc(arr) {
+  return [...arr].sort((a, b) => b - a);
+}
+
+
+// 48
+function isPalindrome(str) {
+  let s = str.toLowerCase();
+  return s === reverseString(s);
+}
+
+
+// 49
+function capitalizeWords(str) {
+  return str
+    .split(" ")
+    .map(w => w[0].toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+
+// 50
+function getIntersection(arr1, arr2) {
+  return arr1.filter(x => arr2.includes(x));
+}
+
+// 51
+function decimalToBinary(n) {
+  return n.toString(2);
+}
+
+// 52
+function wordCount(str) {
+  return str.trim().split(/\s+/).length;
+}
+
+// 53
+function replaceWord(str, oldW, newW) {
+  return str.replaceAll(oldW, newW);
+}
+
+// 54
+function isPrime(n) {
+  if (n < 2) return false;
+  for (let i = 2; i <= Math.sqrt(n); i++)
+    if (n % i === 0) return false;
+  return true;
+}
+
+// 55
+function getNames(users) {
+  return users.map(u => u.name);
+}
+
+// 56
+function calcAge(birthYear) {
+  return new Date().getFullYear() - birthYear;
+}
+
+// 57
+function randomHexColor() {
+  return "#" + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+// 58
+function isSorted(arr) {
+  return arr.every((v, i) => i === 0 || arr[i - 1] <= v);
+}
+
+// 59
+function mergeObjects(obj1, obj2) {
+  return { ...obj1, ...obj2 };
+}
+
+// 60
+function sumDigits(n) {
+  return [...String(n)].reduce((a, b) => a + +b, 0);
+}
+
+// 61
+function flattenArray(arr) {
+  return arr.flat();
+}
+
+// 62
+function delay(ms) {
+  return new Promise(res => setTimeout(res, ms));
+}
+
+// 63
+async function fetchData(url) {
+  const res = await fetch(url);
+  return res.json();
+}
+
+// 64
+function objectToQueryString(obj) {
+  return new URLSearchParams(obj).toString();
+}
+
+// 65
+function deepEqual(a, b) {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+
+// 66
+function uniqueOnly(arr) {
+  return arr.filter(x => arr.indexOf(x) === arr.lastIndexOf(x));
+}
+
+// 67
+function chunkArray(arr, size) {
+  let res = [];
+  for (let i = 0; i < arr.length; i += size)
+    res.push(arr.slice(i, i + size));
+  return res;
+}
+
+// 68
+function daysBetween(d1, d2) {
+  return Math.abs((new Date(d2) - new Date(d1)) / 86400000);
+}
+
+// 69
+function debounce(func, wait) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => func(...args), wait);
+  };
+}
+
+// 70
+function camelToSnake(str) {
+  return str.replace(/[A-Z]/g, l => "_" + l.toLowerCase());
+}
+
+// 71
+function mostFrequent(arr) {
+  let map = {};
+  arr.forEach(x => map[x] = (map[x] || 0) + 1);
+  return Object.keys(map).reduce((a, b) => map[a] > map[b] ? a : b);
+}
+
+// 72
+function maskCard(num) {
+  let s = String(num);
+  return "*".repeat(s.length - 4) + s.slice(-4);
+}
+
+// 73
+function isNumeric(str) {
+  return /^\d+$/.test(str);
+}
+
+console.log(isNumeric("ahmed"))
+
+// 74
+function swapCase(str) {
+  return [...str].map(c =>
+    c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase()
+  ).join("");
+}
+
+// 75
+function simpleInterest(p, r, t) {
+  return (p * r * t) / 100;
+}
+
+// 76
+function getKeys(obj) {
+  return Object.keys(obj);
+}
+
+// 77
+function getValues(obj) {
+  return Object.values(obj);
+}
+
+// 78
+function arrayToObject(arr) {
+  return Object.assign({}, arr);
+}
+
+// 79
+function fibonacci(n) {
+  let res = [0, 1];
+  for (let i = 2; i < n; i++)
+    res[i] = res[i - 1] + res[i - 2];
+  return res.slice(0, n);
+}
+
+// 80
+function isPerfectSquare(n) {
+  return Number.isInteger(Math.sqrt(n));
+}
+
+// 81
+function compact(arr) {
+  return arr.filter(Boolean);
+}
+
+// 82
+function arrayDiff(a, b) {
+  return a.filter(x => !b.includes(x));
+}
+
+// 83
+function timeConvert12to24(t) {
+  let [time, mod] = t.split(" ");
+  let [h, m] = time.split(":");
+  h = mod === "PM" && h !== "12" ? +h + 12 : h;
+  h = mod === "AM" && h === "12" ? "00" : h;
+  return `${h}:${m}`;
+}
+
+// 84
+function daysUntilYearEnd() {
+  let now = new Date();
+  let end = new Date(now.getFullYear(), 11, 31);
+  return daysBetween(now, end);
+}
+
+// 85
+function firstMissingPositive(arr) {
+  let s = new Set(arr.filter(n => n > 0));
+  for (let i = 1; ; i++) if (!s.has(i)) return i;
+}
+
+// 86
+function wordFrequency(str) {
+  let map = {};
+  str.split(/\s+/).forEach(w => map[w] = (map[w] || 0) + 1);
+  return map;
+}
+
+// 87
+function shuffle(arr) {
+  return [...arr].sort(() => Math.random() - 0.5);
+}
+
+// 88
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// 89
+function toCSV(data) {
+  let keys = Object.keys(data[0]);
+  return [
+    keys.join(","),
+    ...data.map(o => keys.map(k => o[k]).join(","))
+  ].join("\n");
+}
+
+// 90
+function formatNumber(n) {
+  return n.toLocaleString();
+}
+
+// 91
+function uniqueRandoms(count, min, max) {
+  let set = new Set();
+  while (set.size < count)
+    set.add(Math.floor(Math.random() * (max - min + 1)) + min);
+  return [...set];
+}
+
+// 92
+function isLeapYear(y) {
+  return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+}
+
+// 93
+function getDayName(date) {
+  return new Date(date).toLocaleDateString("en-US", { weekday: "long" });
+}
+
+// 94
+function truncate(str, limit) {
+  return str.length > limit ? str.slice(0, limit) + "..." : str;
+}
+
+// 95
+function distance(x1, y1, x2, y2) {
+  return Math.hypot(x2 - x1, y2 - y1);
+}
+
+// 96
+function maxChar(str) {
+  return mostFrequent([...str]);
+}
+
+// 97
+function hasSubArray(arr) {
+  return arr.some(Array.isArray);
+}
+
+// 98
+function sumOdds(arr) {
+  return arr.filter(n => n % 2).reduce((a, b) => a + b, 0);
+}
+
+// 100
+function toSlug(str) {
+  return str.toLowerCase().trim().replace(/\s+/g, "-");
+}
